@@ -20,4 +20,4 @@ const taskSchema = new schema({
   },
 });
 
-module.exports = mongoose.model("task", taskSchema);
+module.exports = Task = mongoose.model("task", taskSchema);
