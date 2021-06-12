@@ -21,7 +21,8 @@
     "crypto": "^1.0.1",
     "express": "^4.17.1",
     "express-validator": "^6.11.1",
-    "mongoose": "^5.12.13"
+    "mongoose": "^5.12.13",
+    "nodemailer": "^6.6.1"
   },
   "devDependencies": {
     "dotenv": "^10.0.0",
