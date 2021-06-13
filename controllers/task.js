@@ -44,3 +44,28 @@ exports.addTask = async (req, res, next) => {
     }
   }
 };
+
+exports.deleteTask = async (req, res, next) => {
+  try {
+    const task = await Task.findById(req.params.id);
+
+    if (!task) {
+      return res.status(404).json({
+        success: false,
+        error: "No task found",
+      });
+    }
+
+    await task.remove();
+
+    return res.status(200).json({
+      success: true,
+      data: {},
+    });
+  } catch (err) {
+    return res.status(500).json({
+      success: false,
+      error: "Server Error",
+    });
+  }
+};
