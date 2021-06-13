@@ -69,3 +69,30 @@ exports.deleteTask = async (req, res, next) => {
     });
   }
 };
+
+exports.updateTask = async (req, res, next) => {
+  try {
+    const task = await Task.findById(req.params.id);
+
+    if (!task) {
+      return res.status(404).json({
+        success: false,
+        error: "No task found",
+      });
+    }
+
+    task.reminder = req.body.reminder;
+
+    await task.save();
+
+    return res.status(200).json({
+      success: true,
+      data: {},
+    });
+  } catch (err) {
+    return res.status(500).json({
+      success: false,
+      error: "Server Error",
+    });
+  }
+};
