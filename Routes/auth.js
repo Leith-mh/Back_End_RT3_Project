@@ -23,3 +23,4 @@ router.put(
   runValidation,
   resetPassword
 );
+router.post("/google-login", googleLogin);
