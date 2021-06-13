@@ -16,3 +16,31 @@ exports.getTasks = async (req, res, next) => {
     });
   }
 };
+
+exports.addTask = async (req, res, next) => {
+  try {
+    //const { text, day, reminder } = req.body;
+
+    const task = await Task.create(req.body);
+
+    //return res.status(201).json({
+    //  success: true,
+    //  data: task,
+    //});
+    return res.status(201).json(task);
+  } catch (err) {
+    if (err.name === "ValidationError") {
+      const messages = Object.values(err.errors).map((val) => val.message);
+
+      return res.status(400).json({
+        success: false,
+        error: messages,
+      });
+    } else {
+      return res.status(500).json({
+        success: false,
+        error: "Server Error",
+      });
+    }
+  }
+};
