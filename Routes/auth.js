@@ -17,3 +17,9 @@ router.put(
   forgotPassword
 );
 router.post("/account-activation", accountActivation);
+router.put(
+  "/reset-password",
+  resetPasswordValidator,
+  runValidation,
+  resetPassword
+);
