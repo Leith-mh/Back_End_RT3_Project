@@ -12,7 +12,8 @@ const app = express();
 connectDB();
 
 //create Route
-app.use("/api/task", require("./Routes/tasks"));
+app.use("/api/v1/task", require("./Routes/tasks"));
+app.use("/api", require("./Routes/auth"));
 
 const PORT = process.env.PORT;
 
